@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-captcha-rs = { path = "./captcha-rs" }
+captcha-rs = { git = "https://github.com/ParkSnoopy/captcha-rs.git", branch = "main-captcha-gen" }
 either = "1.15"
 image = "0.25.8"
 rayon = "1.11.0"

@@ -1,3 +1,0 @@
-[submodule "captcha-rs"]
-	path = captcha-rs
-	url = https://github.com/ParkSnoopy/captcha-rs
