@@ -6,3 +6,5 @@ edition = "2024"
 [dependencies]
 captcha-rs = { path = "./captcha-rs" }
 either = "1.15"
+image = "0.25.8"
+rayon = "1.11.0"
