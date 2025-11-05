@@ -15,27 +15,34 @@ use either::{
 use rayon::prelude::*;
 
 const OUTPUT_POSTFIX: &str  = "dist/";
-const OUTPUT_FORMAT : &str  = "jpg";
-const OUTPUT_W: u32 = 200;
-const OUTPUT_H: u32 = 80;
+const OUTPUT_FORMAT : &str  = "png";
+const OUTPUT_W: u32 = 250;
+const OUTPUT_H: u32 = 100;
 
-const REPEAT: usize = 2;
+const REPEAT: usize = 1;
 const LENGTH: usize = 4;
 
-const SOURCE: &str  = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+const SOURCE: &str  = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
 
 
 
 static TOTAL: LazyLock<usize> = LazyLock::new(|| {
     SOURCE.len().pow(LENGTH as u32) as usize
 });
-const PRINT_EVERY: usize = 50000;
+const PRINT_EVERY: usize = 10000;
 static CURRENT: LazyLock<Arc<RwLock<usize>>> = LazyLock::new(|| {
     Arc::new(RwLock::new(0))
 });
 static OUTPUT_ROOT: OnceLock<PathBuf> = OnceLock::new();
 
 fn main() {
+
+    // RUNTIME TEST
+
+    assert_eq!(SOURCE.len(), 10+26);
+
+    //
+
     OUTPUT_ROOT.set({
         let mut cwd = env::current_dir().expect("Unable to get `CWD`");
         cwd.push(OUTPUT_POSTFIX);
