@@ -18,6 +18,7 @@ const OUTPUT_POSTFIX: &str  = "dist/";
 const OUTPUT_FORMAT : &str  = "png";
 const OUTPUT_W: u32 = 250;
 const OUTPUT_H: u32 = 100;
+const OUTPUT_INDEX_FROM: usize = 0;
 
 const REPEAT: usize = 1;
 const LENGTH: usize = 4;
@@ -63,7 +64,7 @@ fn main() {
             // Type-Checker require type-annotation
             let target: String = target.to_string();
 
-            for i in 0..REPEAT {
+            for i in (OUTPUT_INDEX_FROM)..(OUTPUT_INDEX_FROM+REPEAT) {
                 let path = make_path(&target, i);
                 //println!("  - Building: `{target}` [ ./{OUTPUT_POSTFIX} {:?} ]", path.file_name().expect("Invalid File Path"));
 
